@@ -1,4 +1,5 @@
 ﻿using ProjetoWEB19NET.Dominio.ValidacaoModels;
+using System;
 
 namespace Dominio.Modelos
 {
@@ -8,7 +9,7 @@ namespace Dominio.Modelos
         {
 
         }
-
+        
         public Receita(string titulo, string descricao, string ingredientes, string modoPreparo, int idCategoria)
         {
             Titulo = titulo;
@@ -19,7 +20,7 @@ namespace Dominio.Modelos
             this.Validate<Receita>(this, new ReceitaValidacao());
         }
 
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Ingredientes { get; set; }

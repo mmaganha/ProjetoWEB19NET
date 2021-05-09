@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Dominio.Modelos;
 using Microsoft.AspNetCore.Mvc;
+using ProjetoWEB19NET.Dominio.ModelViews;
 using ProjetoWEB19NET.Dominio.Services;
-using ProjetoWEB19NET.ModelViews;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

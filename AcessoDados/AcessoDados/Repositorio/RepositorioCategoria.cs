@@ -33,7 +33,7 @@ namespace ProjetoWEB19NET.Estrutura.AcessoDados.Repositorio
                 string sql = "INSERT INTO CATEGORIA(Descricao) " +
                              "VALUES(@Descricao) " +
                              "SELECT CAST(SCOPE_IDENTITY() AS INT) ";
-                objeto.Id = await connection.QueryFirstOrDefaultAsync<int>(sql, parametros);
+                objeto.IdCategoria = await connection.QueryFirstOrDefaultAsync<int>(sql, parametros);
             }
             return objeto;
         }
@@ -44,7 +44,7 @@ namespace ProjetoWEB19NET.Estrutura.AcessoDados.Repositorio
             {
                 await connection.OpenAsync();
                 var parametros = new DynamicParameters();
-                parametros.Add("@Id", objeto.Id, DbType.Int32);
+                parametros.Add("@Id", objeto.IdCategoria, DbType.Int32);
                 parametros.Add("@Descricao", objeto.Descricao, DbType.String);
 
                 string sql = "UPDATE CATEGORIA SET Descricao = @Descricao " +
@@ -76,7 +76,7 @@ namespace ProjetoWEB19NET.Estrutura.AcessoDados.Repositorio
                 var parametros = new DynamicParameters();
                 parametros.Add("@Id", id, DbType.Int32);
 
-                string sql = "SELECT * FROM CATEGORIA " +
+                string sql = "SELECT Id AS IdCategoria,Descricao FROM CATEGORIA " +
                              "WHERE Id = @Id";
               categoria =  await connection.QueryFirstOrDefaultAsync<Categoria>(sql, parametros);
             }
@@ -92,7 +92,7 @@ namespace ProjetoWEB19NET.Estrutura.AcessoDados.Repositorio
                 await connection.OpenAsync();
                 var parametros = new DynamicParameters();
 
-                string sql = "SELECT * FROM CATEGORIA ";
+                string sql = "SELECT Id AS IdCategoria,Descricao FROM CATEGORIA ";
                 lista = connection.Query<Categoria>(sql, parametros).ToList();
             }
 
